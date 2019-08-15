@@ -2,14 +2,11 @@
   <div class="container">
     <%= link_to "Blogger", root_path, class: "brand-logo" %>
     <ul class="right">
-      <% if false %>
-        <li><%= link_to "Signup", "#" %></li>
-        <li><%= link_to "Login", "#" %></li>
+        <li><%= link_to "Signup", signup_path %></li>
+        <li><%= link_to "Login", login_path %></li>
         <li><%= link_to "Logout", "#" %></li>
-      <% else %>
-        <li><%= link_to "Create Blog", "#" %></li>
+        <li><%= link_to "Create Blog", new_blog_path %></li>
         <li><%= link_to "Blog List", blogs_path %></li>
-      <% end %>
     </ul>
   </div>
 </nav>

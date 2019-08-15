@@ -1,1 +1,23 @@
 <h1 class="center">Blog List</h1>
+
+<%= form_tag blogs_path, method: "get" do %>
+  <%= text_field_tag :query %>
+  <%= submit_tag :search, class: "btn" %>
+<% end %>
+
+<table class="striped">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+  <% @blogs.each do |blog| %>
+    <tr>
+      <td><%= link_to blog.title, blog_path(blog) %></td>
+      <td><%= link_to "Edit", edit_blog_path(blog) %></td>
+      <td><%= link_to "Delete", blog_path(blog), method: "delete" %></td>
+    </tr>
+  <% end %>
+</table>
