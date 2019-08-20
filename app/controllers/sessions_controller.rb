@@ -1,11 +1,13 @@
 class SessionsController < ApplicationController
   def login
+    
   end
 
   def post_login
   end
 
   def signup
+    
   end
 
   def post_signup
@@ -13,7 +15,7 @@ class SessionsController < ApplicationController
   end
 
   def logout
-
+    
   end
 
   private

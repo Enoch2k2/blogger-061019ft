@@ -3,21 +3,22 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   
   root to: "home#index"
-
+  
   # SESSION ROUTES #
   # -------------- #
-
+  
   get '/login', to: 'sessions#login', as: 'login'
   post '/login', to: 'sessions#post_login'
-
+  
   get '/signup', to: 'sessions#signup', as: 'signup'
   post '/signup', to: 'sessions#post_signup'
-
+  
   delete '/logout', to: 'sessions#logout', as: 'destroy_session'
-
+  
   # -------------- #
   # /blogs
   resources :blogs
+  resources :comments, only: [:create]
   ### RESTFUL ROUTES ###
   # ------------------ #
 

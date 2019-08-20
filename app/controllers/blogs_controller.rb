@@ -1,6 +1,6 @@
 class BlogsController < ApplicationController
-  before_action :set_blog, except: [:index, :new, :create]
- 
+  before_action :set_blog, only: [:show, :edit, :update, :destroy]
+
   def index
     if params[:query]
       @blogs = Blog.where("title LIKE ?", "%#{params[:query]}%")
@@ -24,6 +24,7 @@ class BlogsController < ApplicationController
   end
 
   def show
+    @comment = @blog.comments.build
   end
 
   def edit
