@@ -2,11 +2,7 @@ class BlogsController < ApplicationController
   before_action :set_blog, except: [:index, :new, :create]
 
   def index
-    if params[:query]
-      @blogs = Blog.where("title LIKE ?", "%#{params[:query]}%")
-    else
-      @blogs = Blog.all
-    end
+    @blogs = Blog.search(params[:query])
   end
 
   def new
@@ -15,8 +11,8 @@ class BlogsController < ApplicationController
 
   def create
     # binding.pry
-    blog = Blog.new(blog_params)
-    if blog.save
+    @blog = Blog.new(blog_params)
+    if @blog.save
       redirect_to blogs_path
     else
       render :new

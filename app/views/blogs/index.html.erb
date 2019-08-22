@@ -13,13 +13,7 @@
       <th>Delete</th>
     </tr>
   </thead>
-  <% @blogs.each do |blog| %>
-    <tr>
-      <td><%= link_to blog.title, blog_path(blog) %></td>
-      <td><%= link_to "Edit", edit_blog_path(blog) %></td>
-      <td><%= link_to "Delete", blog_path(blog), method: "delete" %></td>
-    </tr>
-  <% end %>
+  <tbody>
+    <%= render @blogs %>
+  </tbody>
 </table>
-
-link_to
