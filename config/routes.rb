@@ -1,24 +1,26 @@
 Rails.application.routes.draw do
 
-  resources :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   
   root to: "home#index"
 
   # SESSION ROUTES #
   # -------------- #
+  get '/login', to: 'sessions#new', as: 'login' # login_path
+  post '/login', to: 'sessions#create'
 
-  get '/login', to: 'sessions#login', as: 'login'
-  post '/login', to: 'sessions#post_login'
+  delete '/logout', to: 'sessions#destroy', as: 'delete_user_session' #delete_user_session_path
 
-  get '/signup', to: 'sessions#signup', as: 'signup'
-  post '/signup', to: 'sessions#post_signup'
-
-  delete '/logout', to: 'sessions#logout', as: 'destroy_session'
+  # USERS ROUTES #
+  # ------------ #
+  get '/signup', to: 'users#new', as: 'signup' # signup_path
+  post '/signup', to: 'users#create'
 
   # -------------- #
   # /blogs
-  resources :blogs
+  resources :users, only: [] do
+    resources :blogs
+  end
   ### RESTFUL ROUTES ###
   # ------------------ #
 

@@ -1,15 +1,15 @@
 module BlogsHelper
-  def link_to_with_color(link_type, blog)
+  def link_to_with_color(link_type, blog, user)
     if link_type.downcase == "title"
-      link_to(blog.title, blog_path(blog), style: "color: green")
+      link_to(blog.title, user_blog_path(user, blog), style: "color: green")
     elsif link_type.downcase == "edit"
-      link_to("Edit", edit_blog_path(blog))
+      link_to("Edit", edit_user_blog_path(user, blog))
     elsif link_type.downcase == "delete"
-      link_to("Delete", blog_path(blog), method: "delete", style: "color: red")
+      link_to("Delete", user_blog_path(user, blog), method: "delete", style: "color: red")
     end
   end
 
-  def render_blog_errors
+  def render_blog_errors(blog)
     if !blog.errors.empty?
       blog.errors.full_messages.each do |msg|
         li_tag(msg)

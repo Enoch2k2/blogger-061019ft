@@ -3,4 +3,9 @@ class User < ApplicationRecord
   has_secure_password
 
   has_many :blogs
+
+
+  def get_email
+    self.email.gsub(/\@.*/, "")
+  end
 end

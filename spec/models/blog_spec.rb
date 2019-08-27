@@ -14,7 +14,7 @@ RSpec.describe Blog, type: :model do
     context "title" do
       it "must exist" do
         blog = Blog.create(content: "This is a test blog that is written for testing purposes.", user: user)
-
+    
         expect(blog).to be_invalid
       end
 

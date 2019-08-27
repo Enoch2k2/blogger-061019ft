@@ -1,5 +1,7 @@
 <tr>
-  <td><%= link_to_with_color("title", blog) %></td>
-  <td><%= link_to_with_color("edit", blog) %></td>
-  <td><%= link_to_with_color("delete", blog) %></td>
+  <td><%= link_to_with_color("title", blog, @user) %></td>
+  <% if current_user == @user %>
+    <td><%= link_to_with_color("edit", blog, @user) %></td>
+    <td><%= link_to_with_color "delete", blog, @user  %></td>
+  <% end %>
 </tr>

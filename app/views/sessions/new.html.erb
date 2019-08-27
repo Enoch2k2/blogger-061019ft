@@ -1,0 +1,5 @@
+<h1>Login</h1>
+
+<%= render partial: "form", locals: { user: @user, button_name: "Login", session_form_path: login_path } %>
+
+<p><%= link_to "Signup", signup_path %></p>

@@ -3,12 +3,11 @@
     <%= link_to "Blogger", root_path, class: "brand-logo" %>
     <ul class="right">
       <% if is_logged_in? %>
-        <li><%= link_to "Create Blog", new_blog_path %></li>
-        <li><%= link_to "Blog List", blogs_path %></li>
-        <li><%= link_to "Logout", "#" %></li>
-      <% else %>
-        <li><%= link_to "Signup", signup_path %></li>
-        <li><%= link_to "Login", login_path %></li>
+        <li><%= link_to "Create Blog", new_user_blog_path(current_user) %></li>
+        <li><%= link_to "Blog List", user_blogs_path(current_user) %></li>
+        <li><%= link_to "Logout", delete_user_session_path, method: 'delete' 
+        %></li>
+        <li><%= current_user.get_email %></li>
       <% end %>
     </ul>
   </div>

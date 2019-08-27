@@ -1,8 +1,10 @@
 class BlogsController < ApplicationController
+  before_action :redirect_if_not_signed_in
+  before_action :set_user
   before_action :set_blog, except: [:index, :new, :create]
 
   def index
-    @blogs = Blog.search(params[:query])
+    @blogs = Blog.search(params[:query], @user)
   end
 
   def new
@@ -11,9 +13,9 @@ class BlogsController < ApplicationController
 
   def create
     # binding.pry
-    @blog = Blog.new(blog_params)
+    @blog = @user.blogs.build(blog_params)
     if @blog.save
-      redirect_to blogs_path
+      redirect_to user_blogs_path(@user)
     else
       render :new
     end
@@ -23,6 +25,7 @@ class BlogsController < ApplicationController
   end
 
   def edit
+    redirect_to user_blogs_path(current_user) unless current_user == @user
   end
 
   def update
@@ -39,6 +42,9 @@ class BlogsController < ApplicationController
   end
 
   private
+    def set_user
+      @user = User.find_by_id(params[:user_id])
+    end
 
     def set_blog
       @blog = Blog.find_by_id(params[:id])
