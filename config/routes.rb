@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   end
   ### RESTFUL ROUTES ###
   # ------------------ #
-
+  get '/auth/facebook/callback' => 'sessions#create'
   # index show new create edit update destroy
 
   # blogs_path blogs_url

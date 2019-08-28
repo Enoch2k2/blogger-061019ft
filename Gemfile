@@ -29,7 +29,10 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'materialize-sass', '~> 1.0.0'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
+gem 'omniauth'
+gem 'omniauth-facebook'
 
+gem 'dotenv-rails', groups: [:development, :test]
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
